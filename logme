@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+DIR='/home/deidara/.logme'
+
+if [  -d $DIR ] 
+    then 
+        touch "$DIR/Logs"
+    else
+        mkdir $DIR  && touch "$DIR/Logs"
+        echo -e "\033[32m  > INITIALIZED!"
+        exit 0
+
+fi
+    
+if [[ $1 = "login" ]]
+    then
+        echo "  ------>  " $(date) "  <------ " >> $DIR/Logs
+        echo -e "\033[32m  > LoggedIN!"
+elif [[ $1 = "show" ]]
+    then
+        cnt=$(cat $DIR/Logs | wc -l)
+       
+        if [[ $cnt = '0' ]] 
+        then
+            echo -e "\033[32m  > EMPTY!"
+            
+        else
+            echo ""
+            cat ~/.logme/Logs
+            echo ""
+        fi
+            
+else 
+    if [[ $2 = "END" ]]
+    then 
+        echo -e '\033[36m'$(date +%r) :  "{$1 ENDED}" >> $DIR/Logs
+        echo -e "\033[32m  > ENDED!"
+        echo ""
+    elif [[ $2 = "START" ]]
+    then
+        echo -e '\033[32m'$(date +%r) :  "{$1 STARTED}" >> $DIR/Logs
+        echo -e "\033[32m  > STARTED!"
+        echo ""
+    
+    else 
+        echo -e '\033[01;31m  > HEHE! ERROR, Wrong COMMAND or STATUS'
+        echo -e "\033[33m Usage:"
+        echo "     logme <show/login/TASK_NAME <END/START>>"
+        echo "" 
+    fi
+
+
+fi
+

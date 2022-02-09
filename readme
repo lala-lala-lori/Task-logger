@@ -1,0 +1,7 @@
+# Simple Task Logger
+ log Task with date&time.
+
+Usage:
+     ./logme [show/login/TASK_NAME [END/START] ]	
+      Or Add logme in path
+      sudo mv logme /path/directory/
