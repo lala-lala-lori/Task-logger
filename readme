@@ -4,4 +4,6 @@
 Usage:
      ./logme [show/login/TASK_NAME [END/START] ]	
       Or Add logme in path
-      sudo mv logme /path/directory/
+           sudo mv logme /path/directory/
+         Or
+          export PATH=/your/dir/logme:$PATH 
